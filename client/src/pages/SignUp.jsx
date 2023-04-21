@@ -14,7 +14,7 @@ const SignInPage = () => {
   });
 
   // Destructring the form
-  const { email, password } = formData;
+  const { name,email, password } = formData;
   // const navigate = useNavigate();
   function onChange(e) {
     setFormData((prevState) => ({
@@ -68,8 +68,8 @@ const SignInPage = () => {
               <p className='mb-8 mt-4 '>Don't Have An Account? 
               <Link to='/signup' className='text-red-500 hover:text-purple-700'> Register Here</Link></p>
               <p className='mb-8 mt-4 text-blue-500 hover:text-purple-700'>
-              
-              <Link to='/forgot-password'>Forgot Password</Link>
+              Forgot Password
+              <Link to='/forgot-password'></Link>
             </p>
               
             </div>
