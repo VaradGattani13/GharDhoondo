@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { Link } from 'react-router-dom';
-import QAuth from '../components/QAuth';
-
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
+import { getAuth, signInWithEmailAndPassword, } from 'firebase/auth';
+import {toast} from  'react-toastify'
 const SignInPage = () => {
-
+  
     const [showPassword,setShowPassword]=useState(false)
 
 
@@ -12,7 +13,7 @@ const SignInPage = () => {
     email: "",
     password: "",
   });
-
+  const navigate=useNavigate();
   // Destructring the form
   const { email, password } = formData;
   // const navigate = useNavigate();
@@ -22,7 +23,22 @@ const SignInPage = () => {
       [e.target.id]: e.target.value,
     }));
   }
-
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+     console.log("Invalid Details");
+    }
+  }
 
 
   return (
@@ -37,7 +53,7 @@ const SignInPage = () => {
           />
         </div>
       <div  className='w-full md:w-[67%] lg:w-[40%] ml-20 rounded'>
-        <form >
+        <form onSubmit={onSubmit} >
         <input
               type="email"
               id="email"
@@ -80,7 +96,7 @@ const SignInPage = () => {
             <div>
               <p className='text-center pt-4 font-serif' >OR</p>
               </div>
-              <QAuth/>
+              <OAuth/>
         </form>
         
               

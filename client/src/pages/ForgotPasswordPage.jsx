@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import QAuth from '../components/QAuth';
+import OAuth from '../components/OAuth';
 
 const SignInPage = () => {
   const [email,setEmail]=useState('');
@@ -49,7 +49,7 @@ const SignInPage = () => {
             <div>
               <p className='text-center pt-4 font-serif' >OR</p>
               </div>
-              <QAuth/>
+              <OAuth/>
             
             
         </form>
