@@ -110,3 +110,6 @@ const SignInPage = () => {
 }
 
 export default SignInPage
+
+
+// client/src/pages/SignInPage.jsx 

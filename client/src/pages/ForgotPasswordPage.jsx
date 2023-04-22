@@ -1,3 +1,4 @@
+import { getAuth, sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from 'react-router-dom';
@@ -12,7 +13,21 @@ const SignInPage = () => {
     setEmail(e.target.value);
   }
 
+async function submitEvent(e){
+  e.preventDefault();
+  try {
+    const auth=getAuth();
+    // Emil Use stte hook se milega
+    await sendPasswordResetEmail(auth,email);
+    console.log("EMAIL WAS SENT");
+    
 
+    
+  } catch (error) {
+    console.log("Email Address not found in database");
+    
+  }
+}
 
   return (
     <section>
@@ -26,7 +41,7 @@ const SignInPage = () => {
           />
         </div>
       <div  className='w-full md:w-[67%] lg:w-[40%] ml-20 rounded'>
-        <form >
+        <form  onSubmit={submitEvent}>
         <input
               type="email"
               id="email"

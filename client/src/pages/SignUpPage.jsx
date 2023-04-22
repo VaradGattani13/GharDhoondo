@@ -55,8 +55,8 @@ export default function SignUp() {
 
     } catch (error) {
 
-      toast.error("Something Wrong")
-      // console.log(error);
+      // toast.error("Something Wrong")
+      console.log(error);
     }
   
   
