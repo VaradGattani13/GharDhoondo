@@ -20,7 +20,7 @@ async function submitEvent(e){
     // Emil Use stte hook se milega
     await sendPasswordResetEmail(auth,email);
     console.log("EMAIL WAS SENT");
-    
+            
 
     
   } catch (error) {
